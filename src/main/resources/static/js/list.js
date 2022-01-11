@@ -1,7 +1,7 @@
 const url = '/posts'
 const get = 'get'
 
-$(init)
+init();
 
 function init(){
     let data = requestAllPosts();
@@ -12,7 +12,11 @@ function requestAllPosts(){
         method: get,
     })
         .then((response) => {
-            return response.json();
+            if(response.ok){
+                return response.json();
+            }else{
+                return "something failed";
+            }
         })
         .catch((error) => {
             console.log(error);

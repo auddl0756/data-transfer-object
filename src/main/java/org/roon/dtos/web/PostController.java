@@ -10,21 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-@RequiredArgsConstructor
-@RequestMapping("/posts")
-@RestController
+@Controller
 public class PostController {
-    private final PostService postService;
-
-    @GetMapping
-    public ResponseEntity<List<Post>> getAllPost() {
-        return ResponseEntity.ok().body(postService.getAll());
-    }
-
-    @GetMapping("/post")
-    public ResponseEntity<Post> getOne(int id) {
-        return ResponseEntity.ok().body(postService.getOne(id));
+    @GetMapping("/post-list")
+    public String postlist(){
+        return "post/list";
     }
 }
