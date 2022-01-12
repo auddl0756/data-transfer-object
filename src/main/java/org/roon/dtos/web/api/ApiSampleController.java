@@ -50,10 +50,10 @@ public class ApiSampleController {
     }
 
     @PostMapping("/simple_object")
-    public Object sampleObject(@RequestBody Object object){
-        logger.info("param : "+object);
+    public String sampleObject(@RequestBody String strobj){
+        logger.info("param : "+strobj);
 
-        return object;
+        return strobj;
     }
 
 
