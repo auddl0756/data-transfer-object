@@ -7,7 +7,7 @@ function addClickHandler() {
     const doubleUrl = '/api/sample/double';
     const arrayUrl = '/api/sample/array';
     const simpleObjetUrl = '/api/sample/simple_object';
-    const listObjectUrl = '/api/sample/list_objet';
+    const listObjectUrl = '/api/sample/list_object';
 
     $('#send-sample-string-button').on('click', async () => {
         const ret = await send('sample string', stringUrl);

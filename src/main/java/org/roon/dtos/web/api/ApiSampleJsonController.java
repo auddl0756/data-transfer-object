@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/api/sample/json")
@@ -65,4 +66,20 @@ public class ApiSampleJsonController {
         private String value;
         private String str;
     }
+
+    @PostMapping("/list_object")
+    public void sampleListObject(@RequestBody List<String> params) throws JsonProcessingException{
+        logger.info("params : "+params);
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        List<SampleObjDTO> dtos = new ArrayList<>();
+        for(String param : params){
+            dtos.add(objectMapper.readValue(param,SampleObjDTO.class));
+        }
+
+        for(SampleObjDTO dto : dtos){
+            System.out.println(dto);
+        }
+    }
+
 }
