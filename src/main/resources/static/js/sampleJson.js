@@ -2,12 +2,12 @@
 $(addClickHandler());
 
 function addClickHandler() {
-    const stringUrl = '/api/sample/string';
-    const intUrl = '/api/sample/int';
-    const doubleUrl = '/api/sample/double';
-    const arrayUrl = '/api/sample/array';
-    const simpleObjetUrl = '/api/sample/simple_object';
-    const listObjectUrl = '/api/sample/list_objet';
+    const stringUrl = '/api/sample/json/string';
+    const intUrl = '/api/sample/json/int';
+    const doubleUrl = '/api/sample/json/double';
+    const arrayUrl = '/api/sample/json/array';
+    const simpleObjetUrl = '/api/sample/json/simple_object';
+    const listObjectUrl = '/api/sample/json/list_objet';
 
     $('#send-sample-string-button').on('click', async () => {
         const ret = await send('sample string', stringUrl);
@@ -34,6 +34,10 @@ function addClickHandler() {
 function send(data0, url) {
     return fetch(url, {
         method: 'post',
-        body: data0
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify(data0)
     });
 }

@@ -21,6 +21,8 @@ public class ApiSampleController {
         return str;
     }
 
+    // this makes
+    // [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain;charset=UTF-8' not supported]
     @PostMapping("/int")
     public int sampleInt(@RequestBody int num) {
         logger.info("param : " + num);

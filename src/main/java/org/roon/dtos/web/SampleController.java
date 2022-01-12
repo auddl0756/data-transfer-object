@@ -13,8 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class SampleController {
 
     @GetMapping
-    public String sample(){
+    public String sample() {
         return "sample/sample";
+    }
+
+    @GetMapping("/json")
+    public String sampleJson() {
+        return "sample/sampleJson";
     }
 
 }
