@@ -1,5 +1,8 @@
 package org.roon.dtos.web.api;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -43,9 +46,12 @@ public class ApiSampleJsonController {
     }
 
     @PostMapping("/simple_object")
-    public Object sampleObject(@RequestBody Object param){
+    public String sampleObject(@RequestBody String param) throws JsonProcessingException, JsonMappingException {
         logger.info("param : " + param);
-        SampleObjDTO dto = (SampleObjDTO) param;    // target type에 대한 정보가 없어서 Jackson의 default type인 LinkedHashMap을 쓰는 것이라 함..
+//        SampleObjDTO dto = (SampleObjDTO) param;    // target type에 대한 정보가 없어서 Jackson의 default type인 LinkedHashMap을 쓰는 것이라 함..
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        SampleObjDTO dto = objectMapper.readValue(param,SampleObjDTO.class);
 
         logger.info(dto.toString());
         return param;
