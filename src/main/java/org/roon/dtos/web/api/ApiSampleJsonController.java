@@ -24,4 +24,16 @@ public class ApiSampleJsonController {
         logger.info("param : " + num);
         return num;
     }
+
+    @PostMapping("/array")
+    public String[] sampleArray(@RequestBody String[] params){
+        StringBuilder sb = new StringBuilder();
+        for(String param : params){
+            sb.append(param).append(" ");
+        }
+
+        logger.info("params : " + sb.toString());
+
+        return params;
+    }
 }
