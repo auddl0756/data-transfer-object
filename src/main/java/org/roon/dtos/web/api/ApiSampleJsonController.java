@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RequestMapping("/api/sample/json")
 @RestController
 public class ApiSampleJsonController {
@@ -26,7 +28,7 @@ public class ApiSampleJsonController {
     }
 
     @PostMapping("/array")
-    public String[] sampleArray(@RequestBody String[] params){
+    public List<String> sampleArray(@RequestBody List<String> params){
         StringBuilder sb = new StringBuilder();
         for(String param : params){
             sb.append(param).append(" ");
