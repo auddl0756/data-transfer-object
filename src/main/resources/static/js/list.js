@@ -1,14 +1,13 @@
 const url = '/posts'
 const get = 'get'
 
-init();
+initListPage();
 
-async function init() {
+async function initListPage() {
     let posts = await requestAllPosts();
     console.log(posts);
 
     let list1DOM = document.querySelector('.list1');
-
 
     for (let post of posts) {
         post.toString = function () {
@@ -18,6 +17,7 @@ async function init() {
         list1DOM.innerHTML += '<li>' + post.toString() + '</li>';
     }
 }
+
 
 function requestAllPosts() {
     return fetch(url, {
