@@ -49,5 +49,12 @@ public class ApiSampleController {
         return params;
     }
 
+    @PostMapping("/simple_object")
+    public Object sampleObject(@RequestBody Object object){
+        logger.info("param : "+object);
+
+        return object;
+    }
+
 
 }
