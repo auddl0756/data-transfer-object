@@ -45,7 +45,7 @@ public class ApiSampleJsonController {
     @PostMapping("/simple_object")
     public Object sampleObject(@RequestBody Object param){
         logger.info("param : " + param);
-        SampleObjDTO dto = (SampleObjDTO) param;
+        SampleObjDTO dto = (SampleObjDTO) param;    // target type에 대한 정보가 없어서 Jackson의 default type인 LinkedHashMap을 쓰는 것이라 함..
 
         logger.info(dto.toString());
         return param;
