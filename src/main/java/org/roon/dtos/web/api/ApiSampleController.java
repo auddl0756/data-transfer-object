@@ -23,7 +23,7 @@ public class ApiSampleController {
         return str;
     }
 
-    // this makes
+    // below makes
     // [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain;charset=UTF-8' not supported]
     @PostMapping("/int")
     public int sampleInt(@RequestBody int num) {
@@ -31,8 +31,6 @@ public class ApiSampleController {
         return num;
     }
 
-    // this makes
-    // [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain;charset=UTF-8' not supported]
     @PostMapping("/double")
     public double sampleDouble(@RequestBody double num) {
         logger.info("param : " + num);
@@ -40,7 +38,7 @@ public class ApiSampleController {
     }
 
     @PostMapping("/array")
-    public String[] sampleArray(@RequestBody String[] params){
+    public List<String> sampleArray(@RequestBody List<String> params){
         StringBuilder sb = new StringBuilder();
         for(String param : params){
             sb.append(param).append(" ");
