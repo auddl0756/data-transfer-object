@@ -1,5 +1,8 @@
 package org.roon.dtos.web.api;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.roon.dtos.web.SampleController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +43,20 @@ public class ApiSampleJsonController {
     }
 
     @PostMapping("/simple_object")
-    public String sampleObject(@RequestBody String param){
+    public Object sampleObject(@RequestBody Object param){
         logger.info("param : " + param);
+        SampleObjDTO dto = (SampleObjDTO) param;
+
+        logger.info(dto.toString());
         return param;
+    }
+
+    @ToString
+    @Setter
+    @Getter
+    static class SampleObjDTO{
+        private String name;
+        private String value;
+        private String str;
     }
 }
