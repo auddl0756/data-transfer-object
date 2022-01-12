@@ -17,7 +17,10 @@ function addClickHandler() {
         const ret = await send(100, intUrl);
     });
 
-    $('#send-sample-double-button').on('click', () => send(1.1234, doubleUrl));
+    $('#send-sample-double-button').on('click', async () => {
+        const ret = await send(1.1234, doubleUrl);
+    });
+
     $('#send-sample-array-button').on('click', () => send([1, 2, 3, 4, 5, 'a'], arrayUrl));
     $('#send-sample-object-button').on('click', () => send({name: 'obj', value: 1, str: 'abcd'}, simpleObjetUrl));
     $('#send-sample-objectList-button').on('click', () => send([{name: 'obj', value: 1, str: 'abc'}, {

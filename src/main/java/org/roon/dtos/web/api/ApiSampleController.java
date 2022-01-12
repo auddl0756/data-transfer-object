@@ -17,7 +17,13 @@ public class ApiSampleController {
 
     @PostMapping("/string")
     public String sampleString(@RequestBody String str) {
-        logger.info(str);
+        logger.info("param : " + str);
         return str;
+    }
+
+    @PostMapping("/int")
+    public int sampleInt(@RequestBody int num) {
+        logger.info("param : " + num);
+        return num;
     }
 }
