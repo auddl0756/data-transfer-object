@@ -18,4 +18,10 @@ public class ApiSampleJsonController {
         logger.info("param : " + num);
         return num;
     }
+
+    @PostMapping("/double")
+    public double sampleDouble(@RequestBody double num) {
+        logger.info("param : " + num);
+        return num;
+    }
 }
