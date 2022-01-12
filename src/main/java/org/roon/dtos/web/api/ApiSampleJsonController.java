@@ -1,6 +1,7 @@
 package org.roon.dtos.web.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
@@ -68,18 +69,16 @@ public class ApiSampleJsonController {
     }
 
     @PostMapping("/list_object")
-    public void sampleListObject(@RequestBody List<String> params) throws JsonProcessingException{
+    public void sampleListObject(@RequestBody String params) throws Exception{
         logger.info("params : "+params);
         ObjectMapper objectMapper = new ObjectMapper();
 
-        List<SampleObjDTO> dtos = new ArrayList<>();
-        for(String param : params){
-            dtos.add(objectMapper.readValue(param,SampleObjDTO.class));
-        }
+        List<SampleObjDTO> dtos = objectMapper.readValue(params, new TypeReference<List<SampleObjDTO>>() {});
 
         for(SampleObjDTO dto : dtos){
             System.out.println(dto);
         }
+
     }
 
 }
