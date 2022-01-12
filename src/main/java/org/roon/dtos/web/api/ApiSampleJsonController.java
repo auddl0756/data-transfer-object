@@ -38,4 +38,10 @@ public class ApiSampleJsonController {
 
         return params;
     }
+
+    @PostMapping("/simple_object")
+    public String sampleObject(@RequestBody String param){
+        logger.info("param : " + param);
+        return param;
+    }
 }
