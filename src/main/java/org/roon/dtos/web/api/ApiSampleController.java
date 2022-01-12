@@ -38,9 +38,9 @@ public class ApiSampleController {
     }
 
     @PostMapping("/array")
-    public List<String> sampleArray(@RequestBody List<String> params){
+    public List<Integer> sampleArray(@RequestBody List<Integer> params){
         StringBuilder sb = new StringBuilder();
-        for(String param : params){
+        for(int param : params){
             sb.append(param).append(" ");
         }
 
