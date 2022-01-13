@@ -16,12 +16,13 @@ public class ApiSampleController {
 
     @GetMapping("/string")
     public String sampleString(@RequestParam String str) {
-        logger.info("str = "+str);
+        logger.info("param = "+str);
         return str;
     }
 
     @GetMapping("/int")
-    public int sampleInt(@RequestBody int num) {
+    public int sampleInt(@RequestParam int num) {
+        logger.info("param = "+num);
         return num;
     }
 
