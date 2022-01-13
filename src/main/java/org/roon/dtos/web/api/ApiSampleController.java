@@ -26,18 +26,20 @@ public class ApiSampleController {
         return num;
     }
 
-    @GetMapping("/double")
-    public double sampleDouble(@RequestBody double num) {
-        return num;
-    }
+//    @GetMapping("/double")
+//    public double sampleDouble(@RequestBody double num) {
+//        return num;
+//    }
 
     @GetMapping("/array")
-    public List<Integer> sampleArray(@RequestBody List<Integer> params){
+    public List<Integer> sampleArray(@RequestParam List<Integer> params) {
+        logger.info("params = "+params);
         return params;
     }
 
     @GetMapping("/simple_object")
-    public String sampleObject(@RequestBody String strobj){
+    public String sampleObject(@RequestParam String strobj){
+        logger.info("params = "+strobj);
         return strobj;
     }
 

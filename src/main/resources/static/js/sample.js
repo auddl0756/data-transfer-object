@@ -39,8 +39,14 @@ async function send(data0, url0) {
         url += '?num='+data0;
     }
     else{
-        const searchParams = new URLSearchParams(data0);
-        url+=searchParams.toString();
+        if(data0.length === 'undefined'){ //객체 (꼭 그런건 아니지만..)
+            const searchParams = new URLSearchParams(data0);
+            url+=searchParams.toString();
+        }else{ // 배열 ( 유사 배열일수도 있긴 한데...)
+            for(let idx in data0){
+                url+='?param'+idx+'='+data0[idx];
+            }
+        }
     }
 
     return fetch(url);
