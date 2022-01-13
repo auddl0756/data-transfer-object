@@ -1,4 +1,3 @@
-
 $(addClickHandler());
 
 function addClickHandler() {
@@ -31,9 +30,15 @@ function addClickHandler() {
 
 }
 
-function send(data0, url) {
-    return fetch(url, {
-        method: 'get',
-        body: data0
-    });
+async function send(data0, url0) {
+    let url = url0;
+
+    if(typeof data0 === 'string' ){
+        url += '?str='+data0;
+    }else{
+        const searchParams = new URLSearchParams(data0);
+        url+=searchParams.toString();
+    }
+
+    return fetch(url);
 }
