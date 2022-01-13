@@ -10,10 +10,7 @@ import lombok.ToString;
 import org.roon.dtos.web.SampleController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,19 +20,19 @@ import java.util.List;
 public class ApiSampleJsonController {
     private static final Logger logger = LoggerFactory.getLogger(SampleController.class);
 
-    @PostMapping("/int")
+    @GetMapping("/int")
     public int sampleInt(@RequestBody int num) {
         logger.info("param : " + num);
         return num;
     }
 
-    @PostMapping("/double")
+    @GetMapping("/double")
     public double sampleDouble(@RequestBody double num) {
         logger.info("param : " + num);
         return num;
     }
 
-    @PostMapping("/array")
+    @GetMapping("/array")
     public List<String> sampleArray(@RequestBody List<String> params){
         StringBuilder sb = new StringBuilder();
         for(String param : params){
@@ -47,7 +44,7 @@ public class ApiSampleJsonController {
         return params;
     }
 
-    @PostMapping("/simple_object")
+    @GetMapping("/simple_object")
     public String sampleObject(@RequestBody String param) throws JsonProcessingException, JsonMappingException {
         logger.info("param : " + param);
 //        SampleObjDTO dto = (SampleObjDTO) param;    // target type에 대한 정보가 없어서 Jackson의 default type인 LinkedHashMap을 쓰는 것이라 함..
@@ -68,7 +65,7 @@ public class ApiSampleJsonController {
         private String str;
     }
 
-    @PostMapping("/list_object")
+    @GetMapping("/list_object")
     public void sampleListObject(@RequestBody String params) throws Exception{
         logger.info("params : "+params);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -76,9 +73,7 @@ public class ApiSampleJsonController {
         List<SampleObjDTO> dtos = objectMapper.readValue(params, new TypeReference<List<SampleObjDTO>>() {});
 
         for(SampleObjDTO dto : dtos){
-            System.out.println(dto);
+            logger.info(dto.toString());
         }
-
     }
-
 }
