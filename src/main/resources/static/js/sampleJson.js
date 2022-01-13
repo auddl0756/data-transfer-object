@@ -33,7 +33,7 @@ function addClickHandler() {
 
 function send(data0, url) {
     return fetch(url, {
-        method: 'post',
+        method: 'get',
         headers: {
             'Content-Type': 'application/json'
         },
